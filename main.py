@@ -132,9 +132,17 @@ def check_conditions():
     
     for ticker, condition, context in rows:
         try:
-            # Get current stock price
-            stock_data = yf.Ticker(ticker).history(period="1d")
-            if stock_data.empty:
+            # Get current stock price (try different periods for after-hours)
+            stock_data = None
+            for period in ["1d", "5d", "1mo"]:
+                try:
+                    stock_data = yf.Ticker(ticker).history(period=period)
+                    if not stock_data.empty:
+                        break
+                except:
+                    continue
+            
+            if stock_data is None or stock_data.empty:
                 print(f"❌ No data found for {ticker}")
                 continue
                 
