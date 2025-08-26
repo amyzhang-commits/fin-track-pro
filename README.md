@@ -81,3 +81,5 @@ python mvp2.py
 ---
 
 Built for monitoring dad's stock portfolio! 📈👨‍💼
+
+Collaborators: Amy Zhang, Claude AI, ChatGPT, Perplexity AI
