@@ -1,7 +1,13 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
 
-TELEGRAM_BOT_TOKEN = "8118036157:AAHKhrOh4Qb2geIL9qe9g9tJKf5ZaRrWh1A"
+load_dotenv()
+
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+if not TELEGRAM_BOT_TOKEN:
+    raise ValueError("TELEGRAM_BOT_TOKEN not set in .env")
 
 def get_bot_info():
     """Check bot info"""
